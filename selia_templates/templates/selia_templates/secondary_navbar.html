@@ -1,0 +1,14 @@
+<div class="container-fluid h-100 secondary-navbar">
+  <div class="row h-100 w-100 m-0">
+    <ul class="nav w-100 nav-tabs">
+      <li class="nav-item">
+        <div class="col-4 h-100">
+          {% block navbar-brand %}
+          {% endblock navbar-brand %}
+        </div>
+      </li>
+      {% block navbar-items %}
+      {% endblock navbar-items %}
+    </ul>
+  </div>
+</div>

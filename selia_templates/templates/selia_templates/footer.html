@@ -1,0 +1,54 @@
+{% load static %}
+
+<div class="container-fluid w-100 p-0 m-0 bg-dark" style="height: 300px;">
+  <div class="row p-5">
+    <div class="col m-5 text-light">
+      <h5><a class="text-light" href="https://www.gob.mx/conabio">CONABIO</a></h5>
+      <p class="text-muted mb-0">Liga Periférico - Insurgentes Sur 4903,</p>
+      <p class="text-muted mb-0">Parques del Pedregal, Alcaldía de Tlalpan, Ciudad de México. C.P. 14010</p>
+      <p class="text-muted mb-0">Teléfono: 5004.5000</p>
+    </div>
+    <div class="col m-5 text-light text-right">
+      <h5>Ligas</h5>
+      <p class="mb-0"><a class="text-muted" href="#">Github</a></p>
+      <p class="mb-0"><a class="text-muted" href="#">DGPI</a></p>
+      <p class="mb-0"><a class="text-muted" href="#">Términos y Condiciones</a></p>
+    </div>
+  </div>
+</div>
+<footer class="mt-auto bg-light w-100 p-4">
+  <div class="container-fluid h-100">
+      <div class="row align-items-center p-1 h-100">
+        <div class="col-1 h-100">
+        </div>
+        <div class="col-8 h-100">
+          {% block footer-left %}
+          <div class="container footer-logos h-100 w-100">
+            <div class="row h-100 w-100">
+              <div class="col h-100">
+                <img src="https://monitoreo.conabio.gob.mx/images/1099-original.png">
+              </div>
+              {% block footer-logos-extra %}
+              <div class="col h-100">
+                <img src="https://monitoreo.conabio.gob.mx/images/Conanp.PNG">
+              </div>
+              <div class="col h-100">
+                <img src="https://monitoreo.conabio.gob.mx/images/logo-pnud.png">
+              </div>
+              {% endblock footer-logos-extra %}
+            </div>
+          </div>
+          {% endblock footer-left %}
+        </div>
+        <div class="col-1 text-dark text-center align-middle">
+          {% block footer-center %}
+          {% endblock footer-center %}
+        </div>
+        <div class="col-2 text-dark text-center align-middle">
+          {% block footer-right %}
+          {% now "SHORT_DATE_FORMAT" %}
+          {% endblock footer-right %}
+        </div>
+      </div>
+  </div>
+</footer>

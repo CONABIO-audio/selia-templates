@@ -1,0 +1,29 @@
+{% extends 'selia_templates/base.html' %}
+
+{% block navbars %}
+  <nav class="navbar navbar-expand navbar-light bg-light secondary-navbar p-1">
+    {% block secondary-navbar %}
+    {% endblock secondary-navbar %}
+  </nav>
+
+  {% block toolbar %}
+    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm d-flex justify-content-between toolbar">
+      <a class="navbar-brand" href="#">{% block toolbar-title %}{% endblock %}</a>
+
+      <ul class="navbar-nav mr-5">
+        {% block toolbar-items %}
+        {% endblock toolbar-items %}
+      </ul>
+    </nav>
+  {% endblock toolbar %}
+{% endblock navbars %}
+
+{% block view-content %}
+<div id="view_content" class="container-fluid h-100 w-100 scroll pl-0 pr-0 animate-in">
+  {% block main-content %}
+  {% endblock main-content %}
+
+  {% include 'selia_templates/footer.html' %}
+</div>
+
+{% endblock view-content %}
