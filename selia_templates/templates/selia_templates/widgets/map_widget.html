@@ -1,0 +1,9 @@
+{% extends "gis/openlayers-osm.html" %}
+{% load i18n l10n %}
+
+{% block map_css %}{% get_current_language_bidi as LANGUAGE_BIDI %}
+#{{ id }}_map { width: 100%; height: 100%; }
+#{{ id }}_map .aligned label { float: inherit; }
+#{{ id }}_div_map { height: 100%; position: relative; vertical-align: top; float: {{ LANGUAGE_BIDI|yesno:"right,left" }}; }
+{% if not display_raw %}#{{ id }} { display: none; }{% endif %}
+{% endblock %}

@@ -22,6 +22,7 @@ setup(
         'django',
         'pycountry',
         'django-autocomplete-light',
+        'selia-forms',
     ],
     classifiers=[
         'Environment :: Web Environment',

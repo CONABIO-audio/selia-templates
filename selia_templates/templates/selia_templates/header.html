@@ -13,12 +13,14 @@
     <div class="container col-7 float-right header-block">
       <ul class="navbar-nav">
         {% block tab-items %}
+          {% include 'selia_templates/navbar_items.html' %}
         {% endblock tab-items %}
       </ul>
     </div>
     {% endblock tabs %}
 
-    {% block user-menu %}
-    {% endblock user-menu %}
+    {% block nav-menu %}
+      {% include 'selia_templates/user_menu.html' %}
+    {% endblock nav-menu %}
   </div>
 </div>

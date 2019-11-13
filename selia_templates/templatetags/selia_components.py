@@ -9,7 +9,7 @@ from dal_select2.widgets import Select2WidgetMixin
 register = template.Library()
 
 
-@register.inclusion_tag('selia_templates/list.html', takes_context=True)
+@register.inclusion_tag('selia_templates/list/list.html', takes_context=True)
 def list_component(context, template_name, item_list, empty_message):
     context['template_name'] = template_name
     context['item_list'] = item_list
@@ -17,41 +17,41 @@ def list_component(context, template_name, item_list, empty_message):
     return context
 
 
-@register.inclusion_tag('selia_templates/detail.html', takes_context=True)
+@register.inclusion_tag('selia_templates/detail/detail.html', takes_context=True)
 def detail_component(context, detail_template, object):
     context['detail_template'] = detail_template
     context['object'] = object
     return context
 
 
-@register.inclusion_tag('selia_templates/help.html', takes_context=True)
+@register.inclusion_tag('selia_templates/modals/help.html', takes_context=True)
 def help_component(context, help_template):
     context['help_template'] = help_template
     return context
 
 
-@register.inclusion_tag('selia_templates/update.html', takes_context=True)
+@register.inclusion_tag('selia_templates/modals/update.html', takes_context=True)
 def update_component(context, update_template, form):
     context['update_template'] = update_template
     context['form'] = form
     return context
 
 
-@register.inclusion_tag('selia_templates/summary.html', takes_context=True)
+@register.inclusion_tag('selia_templates/detail/summary.html', takes_context=True)
 def summary_component(context, summary_template, object):
     context['summary_template'] = summary_template
     context['object'] = object
     return context
 
 
-@register.inclusion_tag('selia_templates/filter.html', takes_context=True)
+@register.inclusion_tag('selia_templates/filters/filter.html', takes_context=True)
 def filter_component(context, template, forms):
     context['template'] = template
     context['forms'] = forms
     return context
 
 
-@register.inclusion_tag('selia_templates/delete.html', takes_context=True)
+@register.inclusion_tag('selia_templates/modals/delete.html', takes_context=True)
 def delete_component(context, object):
     context['object'] = object
     return context
@@ -64,7 +64,7 @@ def viewer_component(context, viewer_template, object):
     return context
 
 
-@register.inclusion_tag('selia_templates/create.html', takes_context=True)
+@register.inclusion_tag('selia_templates/create/create.html', takes_context=True)
 def create_component(context, create_template, form):
     context['create_template'] = create_template
     context['form'] = form
@@ -106,7 +106,7 @@ def autocomplete_media():
     return mark_safe(media)
 
 
-@register.inclusion_tag('selia_templates/filter_bar.html', takes_context=True)
+@register.inclusion_tag('selia_templates/filters/filter_bar.html', takes_context=True)
 def filter_bar(context, forms):
     context['forms'] = forms
 
@@ -238,7 +238,7 @@ def selia_form(form, label):
     return mark_safe(form_html)
 
 
-@register.inclusion_tag('selia_templates/bootstrap_form.html')
+@register.inclusion_tag('selia_templates/create/bootstrap_form.html')
 def bootstrap_form(form):
     return {'form': form}
 
@@ -329,10 +329,10 @@ def remove_form_fields(query, forms):
     return query.urlencode()
 
 
-@register.inclusion_tag('selia_templates/selected_item.html')
+@register.inclusion_tag('selia_templates/select/selected_item.html')
 def selected_item(template, item, label):
     random_id = uuid.uuid4().hex.lower()[0:8]
-    full_template_name = 'selia_templates/select_list_items/{name}.html'
+    full_template_name = 'selia/select_list_items/{name}.html'
     return {
         'template': full_template_name.format(name=template),
         'item': item,
@@ -341,6 +341,6 @@ def selected_item(template, item, label):
     }
 
 
-@register.inclusion_tag('selia_templates/is_own_checkbox.html')
+@register.inclusion_tag('selia_templates/filters/is_own_checkbox.html')
 def is_own_checkbox(form):
     return {'form': form}
