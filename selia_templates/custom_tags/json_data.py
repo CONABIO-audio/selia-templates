@@ -1,16 +1,26 @@
-from django import template
-from django.utils.html import format_html
-from django.utils.translation import gettext as _
 from django.template.loader import get_template
+from django.utils.translation import gettext as _
+from django.utils.html import format_html
 
-register = template.Library()
+
+def update_metadata(form, metadata):
+    form.update_metadata(metadata)
 
 
-@register.simple_tag
+def is_not_trivial_schema(schema):
+    if schema is None:
+        return False
+
+    if 'required' not in schema:
+        return False
+
+    return len(schema['required']) != 0
+
+
 def show_json(data):
     return parse_json_value(data, 0)
 
-@register.simple_tag
+
 def parse_annotation_label(data):
     header_level = 'h6'
     div_class = 'row'
@@ -70,7 +80,7 @@ def parse_json_boolean(data):
     if data:
         response = _('yes')
     else:
-        response =  _('no')
+        response = _('no')
 
     return '{}'.format(response)
 

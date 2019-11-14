@@ -1,159 +1,105 @@
 from django import template
-from django.template.loader import get_template
+from django.utils.safestring import mark_safe
 
-from selia_templates.widgets.map_widgets import IrekuaMapWidget
-from selia_templates.widgets.map_widgets import IrekuaMapWidgetNoControls
+from dal_select2.widgets import Select2WidgetMixin
+
+from selia_templates.custom_tags.components import lists
+from selia_templates.custom_tags.components import details
+from selia_templates.custom_tags.components import extra
+from selia_templates.custom_tags.components import filters
+
+from selia_templates.custom_tags import json_data
 
 
 register = template.Library()
 
 
-class GenericNode(template.Node):
-    def __init__(self, template_name=None, **kwargs):
-        self.template_name = template_name
-        self.kwargs = kwargs
+register.tag('listattribute', lists.listattribute)
+register.tag('listtitle', lists.listtitle)
+register.tag('listsummary', lists.listsummary)
+register.inclusion_tag(
+    'selia_templates/list/list.html',
+    name='list_component',
+    takes_context=True)(lists.list_component)
+register.inclusion_tag(
+    'selia_templates/list/list_icon.html',
+    name='list_icon')(lists.list_icon)
 
-    def render(self, context):
-        template = get_template(self.template_name)
-        template_context = {
-            key: value.render(context)
-            for key, value in self.kwargs.items()
-            if value is not None
-        }
-        return template.render(template_context)
+register.tag('detailitem', details.detailitem)
+register.tag('detailtitle', details.detailtitle)
+register.tag('detailsection', details.detailsection)
+register.inclusion_tag(
+    'selia_templates/detail/detail.html',
+    name='detail_component',
+    takes_context=True)(details.detail_component)
+register.inclusion_tag(
+    'selia_templates/detail/detail_icon.html',
+    name='detail_icon')(details.detail_icon)
 
+register.simple_tag(json_data.show_json, name='show_json')
+register.simple_tag(json_data.parse_annotation_label, name='parse_annotation_label')
 
-@register.inclusion_tag('selia_templates/list/list_icon.html')
-def list_icon(item, size='5em'):
-    return {'item': item, 'size':size}
+register.inclusion_tag(
+    'selia_templates/modals/help.html',
+    name='help_component',
+    takes_context=True)(extra.help_component)
+register.inclusion_tag(
+    'selia_templates/modals/update.html',
+    name='update_component',
+    takes_context=True)(extra.update_component)
+register.inclusion_tag(
+    'selia_templates/detail/summary.html',
+    name='summary_component',
+    takes_context=True)(extra.summary_component)
+register.inclusion_tag(
+    'selia_templates/filters/filter.html',
+    name='filter_component',
+    takes_context=True)(extra.filter_component)
+register.inclusion_tag(
+    'selia_templates/modals/delete.html',
+    name='delete_component',
+    takes_context=True)(extra.delete_component)
+register.inclusion_tag(
+    'selia_templates/viewer.html',
+    name='viewer_component',
+    takes_context=True)(extra.viewer_component)
+register.inclusion_tag(
+    'selia_templates/create/create.html',
+    name='create_component',
+    takes_context=True)(extra.create_component)
+register.inclusion_tag(
+    'selia_templates/annotator.html',
+    name='annotator_component',
+    takes_context=True)(extra.annotator_component)
+register.inclusion_tag(
+    'selia_templates/select/selected_item.html',
+    name='selected_item')(extra.selected_item)
 
-
-@register.inclusion_tag('selia_templates/detail/detail_icon.html')
-def detail_icon(item):
-    return {'item': item}
-
-
-@register.tag
-def listattribute(parser, token):
-    header = parser.parse(('attributevalue',))
-    parser.delete_first_token()
-
-    content = parser.parse(('endlistattribute'))
-    parser.delete_first_token()
-    return GenericNode(
-        template_name='selia_templates/list/list_attribute.html',
-        header=header,
-        content=content)
-
-
-@register.tag
-def listtitle(parser, token):
-    try:
-        image = parser.parse(('endlistimage',))
-        parser.delete_first_token()
-    except:
-        image = None
-
-    title = parser.parse(('endlistheader', ))
-    parser.delete_first_token()
-
-    try:
-        description = parser.parse(('endlisttitle', ))
-        parser.delete_first_token()
-    except:
-        description = None
-
-    return GenericNode(
-        template_name='selia_templates/list/list_item_title.html',
-        title=title,
-        image=image,
-        description=description)
-
-@register.tag
-def listsummary(parser, token):
-    title = parser.parse(('summarycount',))
-    parser.delete_first_token()
-
-    count = parser.parse(('summarybuttons', 'endlistsummary'))
-    tag = parser.next_token()
-
-    buttons = None
-    if tag.contents == 'summarybuttons':
-        buttons = parser.parse(('endlistsummary', ))
-        parser.delete_first_token()
-
-    return GenericNode(
-        template_name='selia_templates/list/list_item_summary.html',
-        title=title,
-        count=count,
-        buttons=buttons)
+register.simple_tag(filters.remove_form_fields, name='remove_form_fields')
+register.inclusion_tag(
+    'selia_templates/filters/filter_bar.html',
+    name='filter_bar',
+    takes_context=True)(filters.filter_bar)
+register.inclusion_tag(
+    'selia_templates/filters/is_own_checkbox.html',
+    name='is_own_checkbox')(filters.is_own_checkbox)
 
 
-@register.tag
-def detailitem(parser, token):
-    header = parser.parse(('endhead',))
-    parser.delete_first_token()
+@register.simple_tag
+def autocomplete_media():
+    extra_script = r'''
+    <script>
+      $(document).on('click', '.dropdown-menu .select2*', function(e) {
+        e.stopPropagation();
+      });
+    </script>
+    '''
 
-    content = parser.parse(('enddetailitem'))
-    parser.delete_first_token()
-    return GenericNode(
-        template_name='selia_templates/detail/detail_item.html',
-        header=header,
-        content=content)
+    media = '''
+    {select2_media}
+    {extra_script}
+    '''.format(
+        select2_media=Select2WidgetMixin().media,
+        extra_script=extra_script)
 
-
-@register.tag
-def detailtitle(parser, token):
-    try:
-        image = parser.parse(('enddetailimage',))
-        parser.delete_first_token()
-    except:
-        image = None
-
-    title = parser.parse(('enddetailheader', ))
-    parser.delete_first_token()
-
-    try:
-        description = parser.parse(('enddetailtitle', ))
-        parser.delete_first_token()
-    except:
-        description = None
-
-    return GenericNode(
-        template_name='selia_templates/detail/detail_title.html',
-        title=title,
-        image=image,
-        description=description)
-
-
-@register.tag
-def detailsection(parser, token):
-    content = parser.parse(('enddetailsection',))
-    parser.delete_first_token()
-    return GenericNode(
-        template_name='selia_templates/detail/detail_section.html',
-        content=content)
-
-
-@register.filter(name='site_map')
-def site_map(site, type='full'):
-    name = 'point_{}'.format(site.pk)
-    if type == 'full':
-        widget = IrekuaMapWidget(attrs={
-            'map_width': '100%',
-            'map_height': '100%',
-            'id': name,
-            'disabled': True})
-    else:
-        widget = IrekuaMapWidgetNoControls(attrs={
-            'map_width': '100%',
-            'map_height': '100%',
-            'id': name,
-            'disabled': True})
-
-    return widget.render(name, site.geo_ref)
-
-
-@register.filter(name='is_not_trivial_schema')
-def is_not_trivial_schema(schema):
-    return len(schema['required']) != 0
+    return mark_safe(media)
