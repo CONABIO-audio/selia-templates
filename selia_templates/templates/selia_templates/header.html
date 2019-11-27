@@ -2,16 +2,16 @@
 {% load i18n %}
 
 <div class="navbar navbar-expand-lg navbar-dark bg-dark box-shadow main-navbar">
-  <div class="container-fluid">
-    <div class="container col-2 float-left header-block">
+  <div class="container-fluid h-100">
+    <div class="container col-2 float-left header-block h-100">
       {% block nav-brand %}
-      <img src="{% static 'selia_templates/img/selia.png' %}" height="50px" class="mr-2"/><a class="navbar-brand" style="color: white !important" href='/' %}>Selia</a>
+      <img src="{% static 'selia_templates/img/selia.png' %}" height="100%" class="mr-2"/><a class="navbar-brand" style="color: white !important" href='/' %}>Selia</a>
       {% endblock nav-brand %}
     </div>
 
     {% block tabs %}
-    <div class="container col-7 float-right header-block">
-      <ul class="navbar-nav">
+    <div class="container col-7 float-right header-block h-100">
+      <ul class="navbar-nav h-100">
         {% block tab-items %}
           {% include 'selia_templates/navbar_items.html' %}
         {% endblock tab-items %}
