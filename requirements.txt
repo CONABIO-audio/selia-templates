@@ -1,0 +1,7 @@
+django-autocomplete-light==3.4.1
+django-crispy-forms==1.8.1
+django-widget-tweaks==1.4.5
+pycountry==19.8.18
+selia-forms==0.1
+selia-templates==0.1
+
