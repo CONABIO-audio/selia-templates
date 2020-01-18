@@ -9,7 +9,6 @@ register = template.Library()
 
 
 register.filter('get_country_name', utils.get_country_name)
-register.filter('site_map', utils.site_map)
 register.filter('update_metadata', json_data.update_metadata, is_safe=True)
 register.filter('is_not_trivial_schema', json_data.is_not_trivial_schema)
 register.filter('remove_fields', urls.remove_fields, is_safe=True)
