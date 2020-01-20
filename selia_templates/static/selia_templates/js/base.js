@@ -11,6 +11,24 @@ $(function() {
   $('.datepicker').datepicker({dateFormat: 'yy-mm-dd'});
 });
 
+// Add animation to navbar collapse button
+window.addEventListener('load', function() {
+  var navbarButton = document.getElementById('navbarButton');
+  var navbarButtonIcon = document.getElementById('navbarButtonIcon');
+  var collapsedNavbar = false;
+
+  if (navbarButton) {
+    navbarButton.addEventListener('click', function(){
+      if(collapsedNavbar){
+        navbarButtonIcon.className = 'fas fa-chevron-up';
+      } else{
+        navbarButtonIcon.className = 'fas fa-chevron-up open';
+      }
+
+      collapsedNavbar = !collapsedNavbar;
+    });
+  }
+});
 
 
 function submitSingle(fileIndex, file, url, total_files) {

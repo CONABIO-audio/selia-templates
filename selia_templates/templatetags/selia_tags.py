@@ -74,6 +74,7 @@ register.inclusion_tag(
 register.inclusion_tag(
     'selia_templates/select/selected_item.html',
     name='selected_item')(extra.selected_item)
+register.tag('navbar', extra.navbar)
 
 register.simple_tag(filters.remove_form_fields, name='remove_form_fields')
 register.inclusion_tag(

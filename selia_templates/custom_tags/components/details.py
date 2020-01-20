@@ -5,7 +5,7 @@ def detailitem(parser, token):
     header = parser.parse(('endhead',))
     parser.delete_first_token()
 
-    content = parser.parse(('enddetailitem'))
+    content = parser.parse(('enddetailitem',))
     parser.delete_first_token()
     return GenericNode(
         template_name='selia_templates/detail/detail_item.html',

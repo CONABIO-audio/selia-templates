@@ -1,4 +1,5 @@
 import uuid
+from selia_templates.custom_tags.components.base import GenericNode
 
 
 def help_component(context, help_template):
@@ -58,3 +59,15 @@ def selected_item(template, item, label):
         'id': random_id,
         'label': label
     }
+
+
+def navbar(parser, token):
+    brand = parser.parse(('endbrand',))
+    parser.delete_first_token()
+
+    items = parser.parse(('endnavbar',))
+    parser.delete_first_token()
+    return GenericNode(
+        template_name='selia_templates/detail/detail_section.html',
+        brand=brand,
+        items=items)

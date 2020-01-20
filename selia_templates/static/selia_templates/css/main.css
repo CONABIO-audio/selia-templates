@@ -476,7 +476,11 @@ a {
 }
 
 .inner-shadow-sm {
-  box-shadow: inset 0 .125rem .25rem rgba(0,0,0,.075)!important;
+  box-shadow: inset 0 .125rem .25rem rgba(0, 0, 0, .075)!important;
+}
+
+.inner-shadow {
+  box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, 0.25)!important;
 }
 
 .lavander-dark {
@@ -518,4 +522,14 @@ animation-iteration-count: infinite;
 50%   {background: rgb(120, 215, 255);}
 75%  {background: rgb(120, 231, 255);}
 100% {background: rgb(120, 215, 255);}
+}
+
+.fa-chevron-up{
+  transform: rotate(0deg);
+  transition: transform 0.2s linear;
+}
+
+.fa-chevron-up.open{
+  transform: rotate(180deg);
+  transition: transform 0.2s linear;
 }
