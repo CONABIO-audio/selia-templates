@@ -1,13 +1,10 @@
 {% extends 'selia_templates/base.html' %}
 
 {% block navbars %}
-  <div>
-    <nav class="navbar container-fluid w-100 p-0 collapse show" id="navbar">
-      {% block secondary-navbar %}
-      {% endblock secondary-navbar %}
-    </nav>
-  </div>
-
+  <nav class="navbar container-fluid w-100 p-0">
+    {% block secondary-navbar %}
+    {% endblock secondary-navbar %}
+  </nav>
 
   {% block toolbar %}
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-sm d-flex justify-content-between toolbar">
@@ -16,11 +13,6 @@
       <ul class="navbar-nav">
         {% block toolbar-items %}
         {% endblock toolbar-items %}
-        <li class="ml-5">
-          <a class="btn btn-text text-primary" data-toggle="collapse" href="#navbar" role="button" aria-expanded="false" aria-controls="navbar" id="navbarButton">
-            <i class="fas fa-chevron-up" id="navbarButtonIcon"></i>
-          </a>
-        </li>
       </ul>
     </nav>
   {% endblock toolbar %}
@@ -33,5 +25,4 @@
 
   {% include 'selia_templates/footer.html' %}
 </div>
-
 {% endblock view-content %}
