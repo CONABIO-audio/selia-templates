@@ -19,22 +19,22 @@ class GenericNode(Node):
 
 
 class ComplexNode(Node):
-    child_nodelists = ('nodelist', 'brand', 'items', )
-
-    def __init__(self, template_name=None, brand=None, items=None):
+    def __init__(self, template_name=None, **kwargs):
         self.template_name = template_name
-        self.brand = brand
-        self.items = items
+        self.data = kwargs
 
     def render(self, context):
         template = get_template(self.template_name)
 
-        print('brand', self.brand)
-        print('items', self.items)
+        template_context = {}
+        for key, value in self.data.items():
+            if value is None:
+                continue
 
-        template_context = {
-            "brand": self.brand.render(context),
-            "items": self.items.render(context),
-        }
+            try:
+                template_context[key] = value.render(context)
+            except:
+                template_context[key] = context[value]
 
+        template_context['request'] = context['request']
         return template.render(template_context)

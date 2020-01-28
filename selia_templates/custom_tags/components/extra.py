@@ -1,5 +1,7 @@
 import uuid
+from django import template
 from selia_templates.custom_tags.components.base import GenericNode
+from selia_templates.custom_tags.components.base import ComplexNode
 
 
 def help_component(context, help_template):
@@ -71,3 +73,20 @@ def navbar(parser, token):
         template_name='selia_templates/detail/detail_section.html',
         brand=brand,
         items=items)
+
+
+def tab(parser, token):
+    content = parser.parse(('endtab',))
+    parser.delete_first_token()
+
+    try:
+        _, url = token.split_contents()
+    except ValueError:
+        raise template.TemplateSyntaxError(
+            "%r tag requires a single argument" % token.contents.split()[0]
+        )
+
+    return ComplexNode(
+        template_name='selia_templates/tab.html',
+        content=content,
+        url=url)

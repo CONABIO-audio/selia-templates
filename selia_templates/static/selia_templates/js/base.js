@@ -20,9 +20,9 @@ window.addEventListener('load', function() {
   if (navbarButton) {
     navbarButton.addEventListener('click', function(){
       if(collapsedNavbar){
-        navbarButtonIcon.className = 'fas fa-chevron-up';
+        navbarButtonIcon.className = 'fas fa-chevron-down';
       } else{
-        navbarButtonIcon.className = 'fas fa-chevron-up open';
+        navbarButtonIcon.className = 'fas fa-chevron-down open';
       }
 
       collapsedNavbar = !collapsedNavbar;

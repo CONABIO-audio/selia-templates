@@ -524,12 +524,12 @@ animation-iteration-count: infinite;
 100% {background: rgb(120, 215, 255);}
 }
 
-.fa-chevron-up{
+.fa-chevron-down {
   transform: rotate(0deg);
   transition: transform 0.2s linear;
 }
 
-.fa-chevron-up.open{
+.fa-chevron-down.open{
   transform: rotate(180deg);
   transition: transform 0.2s linear;
 }

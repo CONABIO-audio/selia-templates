@@ -1,0 +1,9 @@
+<li class="nav-item">
+  {% if url == request.path|urlencode %}
+  <a class="nav-link h-100 active" href="{{ url }}">
+  {% else %}
+  <a class="nav-link h-100" href="{{ url }}">
+  {% endif %}
+    {{ content }}
+  </a>
+</li>
