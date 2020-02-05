@@ -12,31 +12,114 @@
   --dark-brown: #595959;
   --dark-ash: #45484c;
   --footer-height: 150px;
-  --header-height: 60px;
+  --header-height: 40px;
 }
 
-footer {
-  height: var(--footer-height);
-}
-
-.footer-logos > div > div > img {
-  max-height: 100%;
-}
-
-.footer-logos {
-  overflow-y: hidden;
-}
+/* General */
 
 html, body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
 
+select option {
+    margin: 40px;
+    color: #595959;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+}
+
+a {
+  color: var(--teal);
+}
+
+.text-overflow {
+  text-overflow: ellipsis;
+  overflow-y: hidden;
+}
+
+/* Colors */
+
+.lavander-dark {
+  background-color: var(--lavander-dark) !important;
+}
+
+/* Bootstrap Theme */
+
+.nav-link {
+  color: var(--teal);
+}
+
+.btn-link {
+  color: var(--teal);
+}
+
+.btn-primary {
+  background-color: var(--teal);
+  border: none;
+}
+
+/* Footers */
+
+footer {
+  height: var(--footer-height);
+}
+
+.partner-logos img {
+  max-height: 100px;
+  max-width: 200px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+footer .navbar-brand img {
+  max-height: 50px;
+}
+
+/* Header */
+
 .main-navbar {
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.19);
-  height: var(--header-height);
   z-index: 10;
 }
+
+.main-navbar img {
+  height: var(--header-height);
+}
+
+.main-navbar .navbar-brand {
+  color: white!important;
+}
+
+/* Secondary navbars */
+
+.secondary-navbar {
+  z-index: 3;
+}
+
+.nav-tabs > .nav-item > .nav-link.active {
+  color: var(--dark)!important;
+  background-color: var(--light)!important;
+  border-bottom-color: var(--light)!important;
+}
+
+.fa-chevron-down {
+  transform: rotate(0deg);
+  transition: transform 0.2s linear;
+}
+
+.fa-chevron-down.open{
+  transform: rotate(180deg);
+  transition: transform 0.2s linear;
+}
+
+/* Toolbar */
+
+.toolbar {
+  z-index: 2;
+}
+
+/* Content */
 
 .content {
   overflow-x: hidden;
@@ -48,46 +131,12 @@ html, body {
   overflow-x: hidden;
 }
 
-.header-block {
-  border-right: 1px solid rgb(111, 111, 111, 0.4) !important;
-}
-
-
-.small_toolbar {
-  border-radius: 10px;
-  background-color: #d2d9e0 !important;
-  padding: 20px;
-  display: flex;
-  margin: 10px;
-}
-
-.incorrect_pattern {
-  background-color: #F0E68C !important;
-}
-
 .dropdown-toggle:hover {
   background-color: #556577 !important;
 }
 
-#navbarDropdownMenuLink {
-  background-color: #343a40 !important;
-  margin: 0px;
-  border-radius: 0px;
-  display: block;
-  white-space: nowrap;
-}
-
 #dropdownMenuButton {
   background-color: #f8f9fa !important;
-  width: 200px;
-  margin: 0px;
-  overflow: hidden;
-  white-space: nowrap;
-  display: block;
-  text-overflow: ellipsis;
-}
-
-.ellipsise {
   width: 200px;
   margin: 0px;
   overflow: hidden;
@@ -113,80 +162,25 @@ html, body {
   padding: 0px;
 }
 
-.list_item {
-  border-radius: 10px;
-  background-color: #eaeafb !important;
-  padding: 20px 20px 5px 20px;
-  display: flex;
-  flex-direction: row;
-  display: table-cell;
-}
-.error_item {
-  border-radius: 10px;
-  background-color: #ffdacc !important;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  display: table-cell;
-}
-
-.duplicate_item {
-  border-radius: 10px;
-  background-color: #eaeafb !important;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  display: table-cell;
-}
-
-.upload_not_ready {
-  color: var(--step-color) !important;
-}
-
-.uploaded_item {
-  border-radius: 10px;
-  background-color: #e2f0c1 !important;
-  padding: 20px;
-  display: flex;
-  flex-direction: row;
-  display: table-cell;
-}
-
-.header_item {
-  border-radius: 10px;
-  background-color: transparent !important;
-  padding-top: 0px;
-  padding-bottom: 20px;
-  padding-right: 55px;
-  padding-left: 20px;
-  display: flex;
-  flex-direction: row;
-  display: table-cell;
-}
-.upload_list {
-  overflow-y: scroll;
-  min-height:415px;
-  max-height:415px;
-  overflow-x:hidden;
-  padding-right: 15px;
-}
-
-.xdsoft_disabled {
-    color:white !important;
-    background-color:black !important;
-}
 
 .omit_btn {
   background-color: #B22222 !important;
 }
 
-#filePickerContainer {
+
+#view_content {
+  background-color: var(--light-green)!important;
+}
+
+/* List */
+
+.list_item {
   border-radius: 10px;
-  background-color: #f8f9fa!important;
-  padding: 10px;
-  margin-top: 10px;
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #eaeafb !important;
+  padding: 20px 20px 20px 20px;
+  display: flex;
+  flex-direction: row;
+  display: table-cell;
 }
 
 .select_list_item {
@@ -197,45 +191,34 @@ html, body {
   flex-direction: row;
 }
 
-select option {
-    margin: 40px;
-    color: #595959;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+.list-attribute-title {
+  color: var(--dark-ash);
 }
 
-.button_small_toolbar {
-  border-radius: 10px;
-  background-color: #f8f9fa!important;
-  padding: 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
+.list-summary-title {
+  color: var(--dark-ash);
 }
 
-#view_content {
-  background-color: var(--light-green)!important;
+.list-summary-count {
+  line-height: 1.2em;
 }
 
-.navbar-brand {
-  color: #595959 !imorptant;
+.list-summary-button {
+  line-height: 1.2em;
 }
 
-.main-navbar {
-  background-color: var(--dark)!important;
+.empty-list-message {
+  background-color: var(--lavander);
 }
 
 .filter_bar {
   background-color: var(--dark)!important;
 }
 
-.secondary-navbar {
-  z-index: 3;
-}
-
 .ui-datepicker-calendar {
     background-color: white !important;
 }
+
 .ui-datepicker-header {
     background-color: white !important;
 }
@@ -248,17 +231,6 @@ select option {
     display: block;
     width: 100%;
     height: auto;
-}
-
-.toolbar {
-  z-index: 2;
-}
-
-.itemimage_tiny {
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  padding: 5px;
-  width: 120px;
 }
 
 .itemimage {
@@ -282,23 +254,6 @@ select option {
   overflow: hidden;
 }
 
-#dropDownLabel {
-  width: 200px;
-  overflow: hidden;
-  white-space: nowrap;
-  display: block;
-  text-overflow: ellipsis;
-}
-
-.dropdown-menu {
-  width: 30em;
-}
-
-.leaflet-container-default {
-  height: 100%;
-  width: 100%;
-}
-
 .img-thumbnail {
   height: 5em;
   max-width: 5em;
@@ -318,32 +273,6 @@ select option {
   height: calc(1.5em + .75rem + 2px)!important;
 }
 
-#upload_summary .tab {
-  overflow: hidden;
-}
-
-/* Style the buttons that are used to open the tab content */
-#upload_summary .tab a {
-  background-color: inherit;
-  float: left;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  transition: 0.3s;
-}
-
-/* Change background color of buttons on hover */
-#upload_summary .tab a:hover {
-  background-color: #ddd;
-}
-
-/* Create an active/current tablink class */
-#upload_summary .active {
-  background-color: #f8f9fa!important;
-  color: #2F4F4F;
-}
-
 .animate-in {
     -webkit-animation: fadeIn .5s;
     animation: fadeIn .5s;
@@ -354,66 +283,6 @@ select option {
     animation: fadeOut .5s;
 }
 
-.nav-link {
-  color: var(--teal);
-}
-
-.upload_tool {
-    cursor: pointer;
-    margin: 10px;
-}
-
-.multi_option {
-    cursor: pointer;
-}
-
-.multi_option:hover {
-  background-color: #404040 !important;
-}
-
-.item_checkbox {
-    width:20px;
-    height:20px;
-}
-
-.item_col {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    flex-wrap:wrap;
-}
-
-.header_title {
-    border-radius: 30px;
-    padding: 5px;
-    background-color: #b31b00 !important;
-}
-
-.file_title {
-  padding: 5px;
-}
-
-.blank_item_list {
-  height: 500px;
-  text-align: center;
-  border: 2px dashed;
-  align-items: center;
-  font-size: 40px;
-  color: grey;
-}
-
-a {
-  color: var(--teal);
-}
-
-.btn-link {
-  color: var(--teal);
-}
-
-.btn-primary {
-  background-color: var(--teal);
-  border: none;
-}
 
 @-webkit-keyframes fadeIn {
     from { background:black; opacity: 0; }
@@ -435,15 +304,6 @@ a {
     to { background:black; opacity: 0; }
 }
 
-.nav-tabs > .nav-item > .nav-link.active {
-  background-color: var(--light)!important;
-  border-bottom-color: var(--light)!important;
-}
-.upload_tabs > .nav-item > .nav-link.active {
-  background: none !important;
-  border-bottom: none !important;
-}
-
 .filter-bar {
   border-radius: 15px;
   background-color: var(--dark-ash)!important;
@@ -463,13 +323,6 @@ a {
   background: white;
 }
 
-.p-auto {
-  justify-content: center;
-}
-
-.empty-list-message {
-  background-color: var(--lavander);
-}
 
 .error-container {
   background-color: OldLace;
@@ -483,53 +336,20 @@ a {
   box-shadow: inset 0 0 15px 5px rgba(0, 0, 0, 0.25)!important;
 }
 
-.lavander-dark {
-  background-color: var(--lavander-dark) !important;
-}
-
-.dragover {
-  background-color: var(--lavander-dark) !important;
-}
-
-.nav-tabs > .nav-item > .nav-link.active.light-green  {
-  background-color: var(--light-green) !important;
-  border-bottom-color: var(--light-green) !important;
-}
-
-.progress-bar{
- background:  rgb(120, 215, 255);
--webkit-animation-name: pulse; /* Chrome, Safari, Opera */
--webkit-animation-duration: 1s; /* Chrome, Safari, Opera */
--webkit-animation-iteration-count: infinite;
-animation-name: pulse;
-animation-duration: 1s;
-animation-iteration-count: infinite;
-}
-
 //create the animation
 @-webkit-keyframes pulse { // for chrome, safari, opera
-0%   {background: rgb(120, 215, 255);}
-25%   {background: rgb(120, 215, 255);}
-50%   {background: rgb(120, 215, 255);}
-75%  {background: rgb(120, 231, 255);}
-85%{background: rgb(120, 215, 255);}
-100% {background: rgb(120, 215, 255);}
+  0%   {background: rgb(120, 215, 255);}
+  25%   {background: rgb(120, 215, 255);}
+  50%   {background: rgb(120, 215, 255);}
+  75%  {background: rgb(120, 231, 255);}
+  85%{background: rgb(120, 215, 255);}
+  100% {background: rgb(120, 215, 255);}
 }
 
 @keyframes pulse {
-0%   {background: rgb(120, 215, 255);}
-25%   {background: rgb(120, 215, 255);}
-50%   {background: rgb(120, 215, 255);}
-75%  {background: rgb(120, 231, 255);}
-100% {background: rgb(120, 215, 255);}
-}
-
-.fa-chevron-down {
-  transform: rotate(0deg);
-  transition: transform 0.2s linear;
-}
-
-.fa-chevron-down.open{
-  transform: rotate(180deg);
-  transition: transform 0.2s linear;
+  0%   {background: rgb(120, 215, 255);}
+  25%   {background: rgb(120, 215, 255);}
+  50%   {background: rgb(120, 215, 255);}
+  75%  {background: rgb(120, 231, 255);}
+  100% {background: rgb(120, 215, 255);}
 }

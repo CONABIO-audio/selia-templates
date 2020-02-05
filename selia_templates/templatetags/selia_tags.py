@@ -7,6 +7,7 @@ from selia_templates.custom_tags.components import lists
 from selia_templates.custom_tags.components import details
 from selia_templates.custom_tags.components import extra
 from selia_templates.custom_tags.components import filters
+from selia_templates.custom_tags.components import navbars
 
 from selia_templates.custom_tags import json_data
 
@@ -74,8 +75,9 @@ register.inclusion_tag(
 register.inclusion_tag(
     'selia_templates/select/selected_item.html',
     name='selected_item')(extra.selected_item)
-register.tag('navbar', extra.navbar)
-register.tag('tab', extra.tab)
+
+
+register.tag('tab', navbars.tab)
 
 
 register.simple_tag(filters.remove_form_fields, name='remove_form_fields')
