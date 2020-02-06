@@ -21,8 +21,9 @@ setup(
     install_requires=[
         'django',
         'pycountry',
+        'django-crispy-forms',
+        'django-widget-tweaks',
         'django-autocomplete-light',
-        'selia-forms',
     ],
     classifiers=[
         'Environment :: Web Environment',
