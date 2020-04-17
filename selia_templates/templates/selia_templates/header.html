@@ -3,7 +3,7 @@
 
 <nav class="navbar navbar-expand-md navbar-dark bg-dark box-shadow main-navbar">
     {% block nav-brand %}
-    <a class="navbar-brand" href='/' %}>
+    <a class="navbar-brand" href='{% block logo-url %}/{% endblock %}' %}>
       <img src="{% static 'selia_templates/img/selia.png' %}" class="mr-2"/>
       Selia
     </a>
