@@ -120,6 +120,11 @@ def selia_filter(form, label):
     return mark_safe(form_html)
 
 
+@register.inclusion_tag('selia_templates/forms/form_error.html')
+def selia_form_error(form_field):
+    return {'field': form_field}
+
+
 @register.inclusion_tag('selia_templates/forms/bootstrap_form.html')
 def bootstrap_form(form, disabled=False):
     if disabled:
