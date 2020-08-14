@@ -29,6 +29,7 @@ register.inclusion_tag(
 register.tag('detailitem', details.detailitem)
 register.tag('detailtitle', details.detailtitle)
 register.tag('detailsection', details.detailsection)
+register.tag('detaildescription', details.detaildescription)
 register.inclusion_tag(
     'selia_templates/detail/detail.html',
     name='detail_component',
@@ -76,9 +77,7 @@ register.inclusion_tag(
     'selia_templates/select/selected_item.html',
     name='selected_item')(extra.selected_item)
 
-
 register.tag('tab', navbars.tab)
-
 
 register.simple_tag(filters.remove_form_fields, name='remove_form_fields')
 register.inclusion_tag(

@@ -3,7 +3,7 @@
 <div class="form-group w-100">
   {% include 'selia_templates/forms/form_tag.html' %}
   {% if form.errors %}
-    {% selia_form_error form.errors %}
+    {% selia_form_error form %}
   {% endif %}
   {% if form.field.widget.input_type == 'file' %}
   {{ form }}

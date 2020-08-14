@@ -44,6 +44,14 @@ def detailsection(parser, token):
         content=content)
 
 
+def detaildescription(parser, token):
+    content = parser.parse(('enddetaildescription',))
+    parser.delete_first_token()
+    return GenericNode(
+        template_name='selia_templates/detail/detail_description.html',
+        content=content)
+
+
 def detail_component(context, detail_template, object):
     context['detail_template'] = detail_template
     context['object'] = object

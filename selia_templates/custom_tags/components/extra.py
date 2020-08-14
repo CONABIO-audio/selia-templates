@@ -49,11 +49,11 @@ def annotator_component(context, annotator_template, item, annotation_list, mode
     return context
 
 
-def selected_item(template, item, label):
+def selected_item(template, item, label, app="selia"):
     random_id = uuid.uuid4().hex.lower()[0:8]
-    full_template_name = 'selia/select_list_items/{name}.html'
+    full_template_name = f'{app}/select_list_items/{template}.html'
     return {
-        'template': full_template_name.format(name=template),
+        'template': full_template_name,
         'item': item,
         'id': random_id,
         'label': label
